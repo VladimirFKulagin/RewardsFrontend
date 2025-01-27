@@ -5,8 +5,10 @@ import React from 'react';
 export default function RewardList(){
     const [rewards, setRewards] = useState([])
 
+    const app_url= process.env.REACT_APP_API_URL;
+    
     function getRewards(){
-        fetch("http://localhost:7123/api/Rewards/GetRewards")
+        fetch(app_url+"/api/Rewards/GetRewards")
         .then(response => {
             if (response.ok){
                 return response.json()
@@ -26,7 +28,7 @@ export default function RewardList(){
 
 
     function deleteReward(id){
-        fetch("http://localhost:7123/api/Rewards/DeleteReward/"+id, {
+        fetch(app_url+"/api/Rewards/DeleteReward/"+id, {
             method: "DELETE"
         })
         .then(response => {
@@ -77,7 +79,7 @@ export default function RewardList(){
                                     */}
                                     <td>
                                         {/* {reward.image} */}
-                                        <img src={"http://localhost:7123/api/Images/"+reward.image} alt={"..."} width="50" height="50"/>
+                                        <img src={app_url+"/api/Images/"+reward.image} alt={"..."} width="50" height="50"/>
                                     </td>
                                     <td>{reward.name}</td>
                                     <td>{reward.description}</td>

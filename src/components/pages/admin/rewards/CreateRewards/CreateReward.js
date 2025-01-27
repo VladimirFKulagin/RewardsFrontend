@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ReactSelect from 'react-select'
 
 
+const app_url= process.env.REACT_APP_API_URL;
     
 
   const options_icons = [
@@ -92,7 +93,7 @@ export default function CreateReward() {
                 instantBuy: Boolean(reward.instantBuyChecked),
                 roomId: reward.reward_roomId
             };
-            const response = await fetch("http://localhost:7123/api/Rewards/CreateReward",{
+            const response = await fetch(app_url+"/api/Rewards/CreateReward",{
                 method: "POST",
                 body: JSON.stringify(requestData),
                 headers: {

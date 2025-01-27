@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import ReactSelect from 'react-select'
 
 
-    
+    const app_url= process.env.REACT_APP_API_URL;
 
   const options_icons = [
     { value: "Sport", label: 'Sport',  image: 'https://cdn-icons-png.flaticon.com/512/5438/5438900.png' },
@@ -52,7 +52,7 @@ export default function UpdateReward() {
         const [validationErrors, setValidationErrors] = useState({})
 
         async function getRewardById(){
-            fetch("http://localhost:7123/api/Rewards/GetRewards/"+params.id)
+            fetch(app_url+"/api/Rewards/GetRewards/"+params.id)
             .then((response) => {
                 if (response.ok){
                     return response.json()
@@ -128,7 +128,7 @@ export default function UpdateReward() {
                 instantBuy: Boolean(reward.instantBuyChecked),
                 roomId: reward.reward_roomId
             };
-            const response = await fetch("http://localhost:7123/api/Rewards/UpdateReward/"+params.id,{
+            const response = await fetch(app_url+"/api/Rewards/UpdateReward/"+params.id,{
                 method: "PUT",
                 body: JSON.stringify(requestData),
                 headers: {

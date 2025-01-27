@@ -27,9 +27,6 @@ export function Navbar({authenticated, onLogin}){
                                 <li className="nav-item">
                                     <Link className="nav-link text-dark" to="/admin/rewards">Rewards</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <label className="nav-link text-dark">Port: {process.env.REACT_APP_API_URL}</label>
-                                </li>
                             </ul>
                             
                             <ul className="navbar-nav">
